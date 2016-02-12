@@ -3,4 +3,4 @@ Usually we use `ps aux | grep process_name` but that returns lots of info I dont
 
 ## Solution
 
-`pgrep process_name` returns just the pid and `kill ``pgrep process_name``` kills it direclty
+`pgrep process_name` returns just the pid and ``kill `pgrep process_name` `` kills it direclty
