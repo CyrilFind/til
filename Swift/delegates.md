@@ -5,7 +5,7 @@ I always forget how they work...
 Usually you have a view controller and you want it to launch some action that would be better handled by an other class, so you set the latter as delegate of the former.
 
 ## View Controller
-Let's say we sant to trigger the action on the press of a button:
+Let's say we want to trigger the action on the press of a button:
 ```` Swift
 class SomeViewController : MotherViewController {
   weak var delegate: SomeViewControllerDelegate?
