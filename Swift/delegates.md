@@ -1,23 +1,44 @@
 # Delegates
 
-I always forget how they work...
-
-Usually you have a view controller and you want it to launch some action that would be better handled by an other class, so you set the latter as delegate of the former.
+Usually you have a view controller and you want it to launch some action that would be better handled by an other class, so you set the latter as delegate of the former but it can be the other way around.
 
 ## View Controller
-Let's say we want to trigger the action on the press of a button:
+Here, let's say we want to trigger some action on the press of a button, our ViewController will look a bit like this:
+
 ```` Swift
-class SomeViewController : MotherViewController {
-  weak var delegate: SomeViewControllerDelegate?
+class SomeViewController : UIViewController {
+  weak var delegate: SomeViewControllerDelegate? // Define the delegate
   
-  @IBOutlet func pressSomeButton() {
-    delegate?.someViewControllerAction()
+  @IBOutlet func pressSomeButtonToTriggerSomeAction() {
+    delegate?.someViewControllerAction() // Call the delegate method
   }
   // ...
 }
 ````
+
+## Set the delegate
+Usually we set the delegate before presenting the ViewController
+
+```` Swift
+let someViewController = SomeViewController()
+someViewController.delegate = someInstanceOfOtherClass
+// present the view controller
+````
+
+And often we do this in an `OtherClass` instance so `someInstanceOfOtherClass` is then `self`
+
+Other times we set it in the View Controller like this for example : 
+
+```` Swift
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    delegate = someInstanceOfOtherClass // set the delegate
+    // ...
+  }
+````
+
 ## Delegate Protocol
-Then we need to define `SomeViewControllerDelegate`:
+For this to work we need to define `SomeViewControllerDelegate`:
 
 ```` Swift
 protocol SomeViewControllerDelegate : NSObjectProtocol {
@@ -25,7 +46,7 @@ protocol SomeViewControllerDelegate : NSObjectProtocol {
 }
 ````
 ## Delegate Class
-Now we add it to the other class, so that it has to implement `someViewControllerAction()`:
+And we need to add it to the other class, so that it has to implement `someViewControllerAction()`:
 
 ```` Swift
 class OtherClass : MotherClass, SomeViewControllerDelegate {
