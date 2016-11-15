@@ -22,4 +22,4 @@ UIView.animate(withDuration: 1.0, animations: {
 }
 ```
 
-cf. uiview+fade.swift for a cool use of this
+cf. [uiview+fade.swift](https://github.com/CyrilFind/til/blob/master/Swift/uiview%2Bfade.swift) for a cool use of this
