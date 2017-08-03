@@ -2,7 +2,7 @@
 
 I18n handles internationalisation in Rails, with `I18n.translate` or `I18n.t`.
 
-And I realized that `t` alone also works in views, and actually works better:
+And I realized that `t` (or `translate`) alone also works in views, and actually works better:
 
 # Localizing html text with a link
 
@@ -12,8 +12,8 @@ In `en.yml`:
 
 ```` Yml
   message:
-    message_html: "This message contains an %{link}. Click it !"
-    link_text: "awesome link"
+    message_html: "This message contains %{link}. Click it !"
+    link_text: "an awesome link"
     url: "https://www.coolwebsite.com"
 ````
 
@@ -34,6 +34,10 @@ This would work:
 
 whereas using `I18n.t` would return:
 
-> This message contains an \<a href="https://www.coolwebsite.com" > awesome link \</a> . Click it !
+> This message contains \<a href="https://www.coolwebsite.com" > an awesome link \</a> . Click it !
 
-Which is less cool... I can't explain it though 😕
+Which is less cool...
+
+That's because 
+[`t` and `translate` are TranslationHelpers methods](http://api.rubyonrails.org/v5.1/classes/ActionView/Helpers/TranslationHelper.html#method-i-translate)
+and thus apply additional functions like `html_safe`
