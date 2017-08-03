@@ -39,5 +39,5 @@ whereas using `I18n.t` would return:
 Which is less cool...
 
 That's because 
-[`t` and `translate` are TranslationHelpers methods](http://api.rubyonrails.org/v5.1/classes/ActionView/Helpers/TranslationHelper.html#method-i-translate)
+[`t` and `translate` are TranslationHelper methods](http://api.rubyonrails.org/v5.1/classes/ActionView/Helpers/TranslationHelper.html#method-i-translate)
 and thus apply additional functions like `html_safe`
